@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import NewItem from "./Todo";
-import { Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-export default function ItemList({todoList}, {onDel}){
+const List = ({ todoList, onDel }) => {
 
     return (
-        <Col>
-            {
-                todoList.map((item) => {
-                    return (
-                        <NewItem key={item.id} item={item} onDel={onDel}/>
-                    )
-                })
-            }
-        </Col>
-    )
-}
+        <div>
+            {todoList.map((todo) => (
+                <NewItem  key={todo.id} item={todo} onDel={onDel}/>
+            ))}
+        </div>
+    );
+};
+
+export default List;

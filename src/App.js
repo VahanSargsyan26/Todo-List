@@ -1,8 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import { Button, Form } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import List from './List'
@@ -26,7 +23,7 @@ function App() {
           <Inputs 
             onAdd={(text) => {
             setTodos([
-              ...todos, 
+              ...todos,
               {
                 id: GenID(),
                 title: text,
