@@ -10,3 +10,8 @@
 .list {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+.input-group-text{
+  background-color: white !important;
+  border-width: 2px !important;
+}

@@ -1,5 +1,5 @@
 import './App.css';
-import { Row } from 'react-bootstrap';
+import { Button, Row } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import List from './List'
@@ -11,9 +11,7 @@ import GenID from './helpers/GenId';
 
 function App() {
   let [todos, setTodos] = useState([]);
-  const deleteObj = () => {
-    console.log("OBJECT DELETED")
-  }
+  
 
   return (
     <div className="App">
@@ -21,13 +19,15 @@ function App() {
       <Container className='mt-5 border border-dark rounded w-50 list'>
         <Row className="input-btn-field p-2 d-flex justify-content-center border-bottom">
           <Inputs 
-            onAdd={(text) => {
+            onAdd={(text, desciption) => {
             setTodos([
               ...todos,
               {
                 id: GenID(),
                 title: text,
                 date: getCurrentDate(),
+                description: desciption,
+                completed: false
               }
             ])
             }}
@@ -36,9 +36,13 @@ function App() {
         <Row>
         <List 
           todoList={todos} 
-          onDel={deleteObj}
+          onDel={(id) => {
+            setTodos(todos.filter((item) => item.id !== id))
+          }}
         />
         </Row>
+          <Button className="btn btn-danger m-3" disabled={todos.length === 0}>Delete Selected</Button>
+          <Button className="btn btn-primary m-3" disabled={todos.length === 0} >Select all</Button>
       </Container>
     </div>
   );
